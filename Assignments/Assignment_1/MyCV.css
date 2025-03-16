@@ -110,3 +110,23 @@ ul li {
     }
 
 }
+
+@media (max-width: 600px) {
+    body {
+        padding: 1em;
+    }
+
+    .cv-container {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .leftSection, .rightSection {
+        padding: 1em;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }}
