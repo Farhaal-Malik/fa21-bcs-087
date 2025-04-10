@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+
+    <header class="top-header">
+        <nav class="nav-left">
+            <div class="dropdown">
+                <a href="#">What's New</a>
+                <div class="dropdown-menu">
+                    <a href="#">What's New</a>
+                    <a href="#">Bayswater</a>
+                    <a href="#">Islington Bucket</a>
+                    <a href="#">Clovelly</a>
+                </div>
+            </div>
+    
+            <div class="dropdown">
+                <a href="#">Bags</a>
+                <div class="dropdown-menu">
+                    <a href="#">All Bags</a>
+                    <a href="#">Crossbody Bags</a>
+                    <a href="#">Shoulder Bags</a>
+                    <a href="#">Tote Bags</a>
+                    <a href="#">Bucket Bags</a>
+                    <a href="#">Mini & Micro Bags</a>
+                    <a href="#">Top Handle Bags</a>
+                    <a href="#">Clutches & Evening Bags</a>
+                    <a href="#">Backpacks</a>
+                    <a href="#">Men's Bags</a>
+                </div>
+            </div>
+    
+            <div class="dropdown">
+                <a href="#">Women</a>
+                <div class="dropdown-menu">
+                    <a href="#">What's New</a>
+                    <a href="#">Bags</a>
+                    <a href="#">Small Leather Goods</a>
+                    <a href="#">Accessories</a>
+                    <a href="#">Gifts</a>
+                    <a href="#">Icons</a>
+                    <a href="#">Travel</a>
+                    <a href="#">Ready-to-wear</a>
+                </div>
+            </div>
+    
+            <div class="dropdown">
+                <a href="#">Men</a>
+                <div class="dropdown-menu">
+                    <a href="#">Bags</a>
+                    <a href="#">Small Leather Goods</a>
+                    <a href="#">Accessories</a>
+                    <a href="#">Gifts</a>
+                    <a href="#">Travel</a>
+                </div>
+            </div>
+    
+            <div class="dropdown">
+                <a href="#">Gifts</a>
+                <div class="dropdown-menu">
+                    <a href="#">Gifts</a>
+                    <a href="#">Gifts For Her</a>
+                    <a href="#">Gifts For Him</a>
+                </div>
+            </div>
+        </nav>
+    
+        <div class="logo">
+            <h1>Mulberry</h1>
+        </div>
+    
+        <nav class="nav-right">
+            <div class="dropdown">
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+                <div class="dropdown-menu">
+                    <input type="text" placeholder="Search..." style="width: 100%; padding: 10px;">
+                </div>
+            </div>
+    
+            <a href="#">Wishlist</a>
+    
+            <div class="dropdown">
+                <a href="#">My Mulberry</a>
+                <div class="dropdown-menu">
+                    <a href="#">Sign In</a>
+                    <a href="#">Create Account</a>
+                </div>
+            </div>
+    
+            <div class="dropdown">
+                <a href="#">Shopping Bag</a>
+            </div>
+        </nav>
+    </header>
+    <div class="checkout-container">
+
+        <form id="checkoutForm" onsubmit="return validateForm()">
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullName">Full Name <span>*</span></label>
+                <input type="text" id="fullName" name="fullName" required pattern="[A-Za-z ]+" title="Only alphabets are allowed" placeholder="Enter full name">
+                <span class="error" id="fullNameError"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email <span>*</span></label>
+                <input type="email" id="email" name="email" required placeholder="Enter email address">
+                <span class="error" id="emailError"></span>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="phone">Phone Number <span>*</span></label>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10,15}" title="Phone number should be between 10 to 15 digits" placeholder="Enter phone number">
+                <span class="error" id="phoneError"></span>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address <span>*</span></label>
+                <input type="text" id="address" name="address" required placeholder="Enter address">
+                <span class="error" id="addressError"></span>
+            </div>
+
+            <!-- Credit Card Number -->
+            <div class="form-group">
+                <label for="creditCard">Credit Card Number <span>*</span></label>
+                <input type="text" id="creditCard" name="creditCard" required pattern="[0-9]{16}" title="Credit card number must be exactly 16 digits" placeholder="Enter credit card number">
+                <span class="error" id="creditCardError"></span>
+            </div>
+
+            <!-- Expiry Date -->
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date <span>*</span></label>
+                <input type="month" id="expiryDate" name="expiryDate" required>
+                <span class="error" id="expiryDateError"></span>
+            </div>
+
+            <!-- CVV -->
+            <div class="form-group">
+                <label for="cvv">CVV <span>*</span></label>
+                <input type="text" id="cvv" name="cvv" required pattern="[0-9]{3}" title="CVV must be exactly 3 digits" placeholder="Enter CVV">
+                <span class="error" id="cvvError"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Ordering and Shipping</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Repairs</a></li>
+                    <li><a href="#">In-Store Care</a></li>
+                    <li><a href="#">View All Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Investors</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Design Icons</a></li>
+                    <li><a href="#">Journal</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Sustainability</h4>
+                <ul>
+                    <li><a href="#">B Corp</a></li>
+                </ul>
+                <h4>Select Your Region</h4>
+                <ul>
+                    <li><a href="#">Pakistan</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="footer-social">
+            <div>
+                <h4>Follow Mulberry</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        
+            <div class="footer-subscribe">
+                <h4>Sign Up For Updates</h4>
+                <form>
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">GO</button>
+                </form>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <a href="#">Cookie Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">FAQs</a>
+        </div>
+    </footer>
+</body>
+</html>

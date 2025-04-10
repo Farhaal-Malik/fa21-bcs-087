@@ -1,0 +1,146 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* Navigation Bar Styles */
+.navbar {
+    border-bottom: 2px solid #ddd;
+}
+
+.nav-link {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+    padding: 10px 15px;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-nav a:hover {
+    color: #a26c4d; /* Subtle hover effect */
+}
+
+.navbar-nav.ms-auto {
+    justify-content: flex-end;
+}
+
+.footer {
+    background-color: #f8f9fa;
+}
+
+footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+footer .me-3 {
+    font-size: 20px;
+}
+
+/* Footer Links */
+.footer ul {
+    padding-left: 0;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.footer ul li a:hover {
+    color: #a26c4d;  /* Subtle hover effect */
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-social a {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    font-size: 14px;
+    color: #6c757d;
+    margin-top: 20px;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+    color: #6c757d;
+}
+
+.footer-bottom a:hover {
+    color: #a26c4d;  /* Subtle hover effect */
+}
+
+/* Product Section Styles */
+#products {
+    margin-top: 50px;
+}
+
+#products .row {
+    margin: 0; /* Remove any margin between columns */
+}
+
+#products .col {
+    padding: 0; /* Remove padding from columns */
+}
+
+#products .col img {
+    width: 100%;  /* Ensure images take up full width */
+    height: 300px; /* Set fixed height for images */
+    object-fit: cover;  /* Ensure images cover the space without distortion */
+}
+
+/* Footer Layout for Small Devices */
+@media (max-width: 768px) {
+    .footer-social {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+
+    /* Make footer sections stack vertically */
+    .footer .col-md-3, .footer .col-md-2 {
+        margin-bottom: 30px;
+    }
+
+    .footer .col-md-3 {
+        flex: 1;
+    }
+
+    .footer .col-md-2 {
+        flex: 1;
+    }
+
+    /* Ensure newsletter sign-up takes full width on mobile */
+    .footer .col-md-3 {
+        flex: 1;
+        width: 100%;
+    }
+}

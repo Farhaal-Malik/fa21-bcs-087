@@ -22,6 +22,7 @@ body {
     height: 100vh;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
+    overflow: hidden;
 }
 
 .leftSection {
@@ -43,10 +44,6 @@ body {
     margin: 0 auto 1em auto;
 }
 
-h1 {
-    font-size: 2em;
-    color: #333;
-}
 
 h2 {
     font-size: 1.4em;
@@ -95,37 +92,3 @@ ul li {
     display: inline-block;
     margin-right: 5px;
 }
-
-@media (max-width: 900px) {
-    .cv-container {
-        flex-direction: column;
-        height: auto;
-        width: 100%;
-    }
-
-    .leftSection, .rightSection {
-        width: 100%;
-        text-align: center;
-    }
-
-}
-
-@media (max-width: 600px) {
-    body {
-        padding: 1em;
-    }
-
-    .cv-container {
-        width: 100%;
-        height: auto;
-        box-shadow: none;
-        border-radius: 0;
-    }
-
-    .leftSection, .rightSection {
-        padding: 1em;
-    }
-
-    h1 {
-        font-size: 1.5em;
-    }}

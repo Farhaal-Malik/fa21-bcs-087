@@ -1,0 +1,376 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+}
+
+.task-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.task-list li:last-child {
+    border-bottom: none;
+}
+
+.task-list button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task-list button:hover {
+    background-color: #0056b3;
+}
+
+.iframe-container {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: white;
+    border-bottom: 2px solid #ddd;
+    position: relative;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-left a, .nav-right a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    padding: 10px 0;
+}
+
+.nav-left a::after, .nav-right a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: black;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-left a:hover::after, .nav-right a:hover::after {
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    transition: background 0.2s ease-in-out;
+}
+
+.dropdown-menu a:hover {
+    background: #f0f0f0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-left a, .nav-right a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 14.5px;
+}
+
+.logo {
+    font-family: 'Abalone';
+    font-size: 24px;
+}
+.video-container {
+    width: 100vw;
+    overflow: hidden;
+}
+
+.video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(2, auto);  /* 2 rows */
+    max-width: 100%;
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.footer {
+    background: #f8f8f8;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.footer-section h4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 12px;
+}
+.footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-wrap: wrap;
+    gap: 200px;
+    padding: 20px 0;
+}
+
+
+.footer-social h4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+.footer-subscribe {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.footer-subscribe form {
+    display: flex;
+    align-items: center;
+}
+
+.footer-subscribe input {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.footer-subscribe button {
+    padding: 8px 15px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+
+.footer-bottom a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .footer-social {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-subscribe {
+        align-items: center;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 50px; 
+    background-color: #f4f6f8; 
+    color: #495057; 
+    line-height: 1.7;
+}
+
+h1 {
+    color: #2c3e50; 
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.task-list {
+    background-color: #fff;
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+    padding: 30px; 
+    margin-bottom: 40px;
+}
+
+.task-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px; 
+    border-bottom: 1px solid #e0e0e0; 
+}
+
+.task-list li:last-child {
+    border-bottom: none;
+}
+
+.task-list span {
+    font-size: 1.05rem; 
+    font-weight: 600; 
+    color: #343a40; 
+}
+
+.task-list button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px; 
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out; 
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.task-list button:hover {
+    background-color: #024994; 
+    box-shadow: 0 3px 6px rgba(0, 86, 179, 0.4); 
+}
+
+.iframe-container {
+    margin-top: 40px;
+    border: 1px solid #d3d3d3; 
+    border-radius: 12px; 
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+}
+
+iframe {
+    display: block;
+    height: 800px;
+    border: none;
+    border-radius: inherit; 
+}
