@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/css/product-detail.css">
+
+<div class="product-detail-container">
+  <div class="product-detail-image">
+    <img src="<%= product.image %>" alt="<%= product.name %>">
+  </div>
+  <div class="product-detail-info">
+    <h2><%= product.name %></h2>
+    <p><%= product.description %></p>
+    <strong>Price: $<%= product.price %></strong>
+    <br><br>
+    <button class="add-to-cart-btn">Add to Cart</button>
+  </div>
+</div>

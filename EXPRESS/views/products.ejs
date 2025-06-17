@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/products.css">
+
+<h2 style="text-align: center; margin-top: 20px;">Our Products</h2>
+
+<div class="product-grid">
+  <% products.forEach(product => { %>
+    <div class="product-card">
+      <a href="/products/<%= product._id %>">
+        <div class="image-wrapper">
+          <img src="<%= product.image %>" alt="<%= product.name %>">
+        </div>
+      </a>
+     <h3><a href="/products/<%= product._id %>"><%= product.name %></a></h3>
+      <strong>$<%= product.price %></strong>
+    </div>
+  <% }) %>
+</div>
