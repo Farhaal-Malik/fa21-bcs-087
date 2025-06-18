@@ -20,6 +20,16 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
 
+  address: {
+    type: String,
+    default: "", // Optional for profile
+  },
+
+  profileImage: {
+    type: String,
+    default: "/images/default-avatar.webp", 
+  },
+
   isAdmin: {
     type: Boolean,
     default: false,

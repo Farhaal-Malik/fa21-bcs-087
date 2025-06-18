@@ -90,15 +90,21 @@
             <a href="/views/cv.ejs">CV</a>
     
             <div class="dropdown">
-                <a href="#">My Mulberry</a>
-                <div class="dropdown-menu">
-                    <a href="/login">Sign In</a>
-                    <a href="/signup">Create Account</a>
-                </div>
-            </div>
+  <a href="#">My Mulberry</a>
+  <div class="dropdown-menu">
+    <% if (user) { %>
+      <a href="/profile">Profile</a>
+      <a href="/logout">Logout</a>
+    <% } else { %>
+      <a href="/login">Sign In</a>
+      <a href="/signup">Create Account</a>
+    <% } %>
+  </div>
+</div>
+
     
             <div class="dropdown">
-                <a href="#">Shopping Bag</a>
+                <a href="/cart">Shopping Bag</a>
             </div>
         </nav>
     </header>

@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="/css/profile.css">
+
+<div class="profile-wrapper">
+  <h2>Welcome, <%= user.name %></h2>
+  <p class="subtitle">Manage your account information</p>
+
+  <div class="profile-card">
+    <div class="avatar-section">
+      <img src="<%= user.profileImage || '/images/default-avatar.webp' %>" alt="Profile Picture" class="avatar">
+      <p class="avatar-label">Profile Picture</p>
+    </div>
+
+    <form class="profile-form" method="POST" action="/profile" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" value="<%= user.name %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Delivery Address</label>
+        <input id="address" name="address" value="<%= user.address || '' %>">
+      </div>
+
+      <div class="form-group">
+        <label for="avatar">Upload Profile Picture</label>
+        <input type="file" name="avatar" id="avatar" accept="image/*">
+        <small>Recommended size: 1:1 square image</small>
+      </div>
+
+      <button type="submit" class="btn">Update Profile</button>
+    </form>
+  </div>
+</div>
