@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/css/admin-product.css">
+
+<div class="products-wrapper">
+  <!-- Header row -->
+  <div class="header-bar">
+    <h2>Products</h2>
+    <a href="/admin/products/add" class="btn-add">
+      <i class="fa-solid fa-plus"></i> Add Product
+    </a>
+  </div>
+
+  <!-- Card & table -->
+  <div class="card">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price ($)</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(p => { %>
+          <tr>
+            <td data-label="Image"><img src="<%= p.image %>" alt="<%= p.name %>"></td>
+            <td data-label="Name"><%= p.name %></td>
+            <td data-label="Price"><%= p.price.toFixed(2) %></td>
+            <td data-label="Actions" class="table-actions">
+              <a href="/admin/products/<%= p._id %>/edit"><i class="fa-solid fa-pen"></i> Edit</a>
+              <form
+                action="/admin/products/<%= p._id %>/delete"
+                method="POST"
+                style="display:inline"
+              >
+                <button onclick="return confirm('Delete this product?')">
+                  <i class="fa-solid fa-trash"></i> Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>

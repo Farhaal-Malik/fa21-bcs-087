@@ -1,0 +1,113 @@
+/* ---------- Palette ---------- */
+:root {
+  --brand-dark: #1f2733;
+  --brand-accent: #4661e6;
+  --grey-bg: #f7f9fc;
+  --grey-line: #e3e8ef;
+  --txt-main: #243447;
+}
+
+/* ---------- Layout ---------- */
+body { background: var(--grey-bg); }
+
+.products-wrapper {
+  max-width: 1180px;
+  margin: 40px auto;
+  padding: 0 25px;
+}
+
+/* ---------- Header bar ---------- */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.header-bar h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin: 0;
+}
+
+/* ---------- Add button ---------- */
+.btn-add {
+  background: var(--brand-accent);
+  color: #fff;
+  padding: 10px 22px;
+  font-size: 15px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  transition: all .15s ease;
+}
+.btn-add i { font-size: 18px; }
+.btn-add:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,.15); }
+
+/* ---------- Card container ---------- */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+/* ---------- Table ---------- */
+.admin-table { width: 100%; border-collapse: collapse; }
+
+.admin-table thead {
+  background: var(--brand-dark);
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+.admin-table th, .admin-table td { padding: 18px 20px; text-align: left; }
+
+.admin-table tbody tr:nth-child(even) { background: var(--grey-bg); }
+.admin-table tbody tr:hover       { background: #eef3fc; }
+
+.admin-table img {
+  width: 72px; height: 72px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--grey-line);
+}
+
+/* ---------- Action links ---------- */
+.table-actions a,
+.table-actions button {
+  font-size: 14px;
+  color: var(--brand-accent);
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.table-actions button { color: #e04b4b; }
+
+.table-actions a:hover,
+.table-actions button:hover { text-decoration: underline; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  .admin-table, thead, tbody, th, td, tr { display: block; }
+  thead { display: none; }
+  tr { margin-bottom: 14px; background: #fff; border-radius: 8px; overflow: hidden; }
+  td { padding-left: 50%; position: relative; border-bottom: 1px solid var(--grey-line); }
+  td:last-child { border: none; }
+  td:before {
+    content: attr(data-label);
+    position: absolute; left: 18px;
+    font-weight: 600; color: var(--txt-main);
+  }
+  .table-actions { justify-content: flex-start; }
+}
