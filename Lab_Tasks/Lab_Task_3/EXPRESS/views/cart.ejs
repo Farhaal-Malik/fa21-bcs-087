@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/css/cart.css">
+
+<div class="cart-container">
+  <h2>Your Shopping Bag</h2>
+
+  <% if (cartItems.length === 0) { %>
+    <p>Your cart is empty.</p>
+  <% } else { %>
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cartItems.forEach(({ product, quantity }) => { %>
+          <tr>
+            <td><strong><%= product.name %></strong></td>
+            <td>$<%= product.price %></td>
+            <td>
+              <input type="number"
+                     value="<%= quantity %>"
+                     min="1"
+                     onchange="updateCartQty('<%= product._id %>', this.value)">
+            </td>
+            <td>$<%= product.price * quantity %></td>
+            <td>
+              <button onclick="removeItem('<%= product._id %>')" class="remove-btn">🗑️</button>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <div class="cart-actions">
+      <a href="/checkout" class="checkout-btn">Proceed to Checkout</a>
+    </div>
+  <% } %>
+</div>
+
+<script>
+  function updateCartQty(productId, qty) {
+    fetch("/cart/update", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ quantities: { [productId]: qty } })
+    }).then(() => location.reload());
+  }
+
+  function removeItem(productId) {
+    fetch("/cart/update", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ remove: productId })
+    }).then(() => location.reload());
+  }
+</script>

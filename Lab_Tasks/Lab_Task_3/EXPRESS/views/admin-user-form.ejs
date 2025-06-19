@@ -1,0 +1,33 @@
+<!-- views/admin-user-form.ejs -->
+<link rel="stylesheet" href="/css/admin-user-form.css">
+
+<div class="form-wrapper">
+  <div class="form-header">
+    <h2>Edit User Role</h2>
+  </div>
+
+  <form
+    action="/admin/users/<%= user._id %>/edit"
+    method="POST"
+    class="form-card"
+  >
+    <p><strong>Name:</strong> <%= user.name %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><strong>Address:</strong> <%= user.address || "—" %></p>
+
+    <!-- Modern toggle-switch row -->
+    <div class="toggle-row">
+      <label class="switch">
+        <input
+          type="checkbox"
+          name="isAdmin"
+          <%= user.isAdmin ? "checked" : "" %>
+        >
+        <span class="slider"></span>
+      </label>
+      <span>Admin privileges</span>
+    </div>
+
+    <button class="btn-save">Save</button>
+  </form>
+</div>

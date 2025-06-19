@@ -1,0 +1,95 @@
+/* ---------- Palette (inherit admin scheme) ---------- */
+:root {
+  --brand-dark:   #1f2733;
+  --brand-accent: #4661e6;
+  --grey-bg:      #f7f9fc;
+  --grey-line:    #e3e8ef;
+}
+body { background: var(--grey-bg); }
+
+/* ---------- Wrapper ---------- */
+.form-wrapper {
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 0 25px;
+}
+
+/* ---------- Header ---------- */
+.form-header h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 25px;
+}
+
+/* ---------- Card ---------- */
+.form-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 34px 36px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 15px;
+  color: var(--brand-dark);
+}
+
+/* ---------- Text rows ---------- */
+.form-card p { margin: 0; }
+
+/* ---------- Toggle ---------- */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* fancy switch */
+.switch {
+  position: relative;
+  width: 46px;
+  height: 24px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; cursor: pointer;
+  inset: 0;
+  background: #cfd9e4;
+  border-radius: 34px;
+  transition: background .2s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform .2s;
+}
+input:checked + .slider { background: var(--brand-accent); }
+input:checked + .slider:before { transform: translateX(22px); }
+
+/* ---------- Save button ---------- */
+.btn-save {
+  align-self: flex-end;
+  margin-top: 6px;
+  background: var(--brand-accent);
+  color: #fff;
+  border: none;
+  padding: 10px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.btn-save:hover { background: #3855d0; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .form-card { padding: 26px; }
+  .btn-save { width: 100%; }
+}

@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="/css/admin-users.css">
+
+<h2 class="section-heading">
+  <i class="bi bi-person-vcard"></i><span>  -------- Users</span>
+</h2>
+
+
+<% if (!users.length) { %>
+  <p style="text-align:center">No users found.</p>
+<% } %>
+
+<% const meId = user && user.id; %>
+
+<% users.forEach(u => { %>
+  <div class="user-card">
+    <!-- Header -->
+    <div class="user-header">
+      <img src="<%= u.profileImage %>" alt="avatar">
+      <div class="meta">
+        <div class="name"><%= u.name %></div>
+        <div class="email"><%= u.email %></div>
+      </div>
+
+      <% if (u.isAdmin) { %>
+        <span class="badge-admin">Admin</span>
+      <% } %>
+    </div>
+
+    <!-- Actions -->
+    <div class="user-body">
+      <a href="/admin/users/<%= u._id %>/orders">
+        <i class="fa-solid fa-box"></i> Orders
+      </a>
+
+      <% if (u._id.toString() !== meId) { %>
+        <a href="/admin/users/<%= u._id %>/edit">
+          <i class="fa-solid fa-user-shield"></i> Role
+        </a>
+        <button type="button" onclick="confirmDelete('<%= u._id %>')">
+          <i class="fa-solid fa-trash"></i> Delete
+        </button>
+      <% } %>
+    </div>
+  </div>
+<% }) %>
+
+<!-- Modal -->
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <p>Are you sure you want to delete this user?</p>
+    <form id="modalForm" method="POST">
+      <div class="modal-buttons">
+        <button type="submit" class="btn-confirm">Yes, Delete</button>
+        <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function confirmDelete(userId) {
+    const form = document.getElementById("modalForm");
+    form.action = `/admin/users/${userId}/delete`;
+    document.getElementById("deleteModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("deleteModal").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("deleteModal");
+    if (event.target === modal) closeModal();
+  };
+</script>

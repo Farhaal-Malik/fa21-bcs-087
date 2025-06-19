@@ -1,0 +1,91 @@
+/* ---------- Palette ---------- */
+:root {
+  --brand-dark: #1f2733;
+  --brand-accent: #4661e6;
+  --grey-bg: #f7f9fc;
+  --grey-line: #e3e8ef;
+}
+
+/* ---------- Page wrapper ---------- */
+.form-wrapper {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 0 25px;
+}
+
+/* ---------- Header ---------- */
+.form-header h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 25px;
+}
+
+/* ---------- Card ---------- */
+.form-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 34px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ---------- Labels & inputs ---------- */
+.form-card label {
+  font-weight: 600;
+  color: var(--brand-dark);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-card input[type="text"],
+.form-card input[type="number"],
+.form-card input[type="url"],
+.form-card textarea,
+.form-card input[type="file"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--grey-line);
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.form-card textarea { resize: vertical; min-height: 120px; }
+
+/* ---------- Image preview ---------- */
+.preview-box {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.preview-box img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--grey-line);
+}
+
+/* ---------- Save button ---------- */
+.btn-save {
+  align-self: flex-end;
+  background: var(--brand-accent);
+  color: #fff;
+  border: none;
+  padding: 10px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.btn-save:hover { background: #3855d0; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .form-card { padding: 24px; }
+  .btn-save { width: 100%; }
+}

@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/css/user-orders.css">
+
+<h2 class="section-heading">
+  <i class="bi bi-bag-check-fill"></i><span>  -------- My Orders</span>
+</h2>
+
+<% if (!orders.length) { %>
+  <p style="text-align:center">You haven’t placed any orders yet.</p>
+<% } %>
+
+<% orders.forEach(o => { 
+     const badgeClass = {
+       Processing : "badge badge-processing",
+       Shipped    : "badge badge-shipped",
+       Delivered  : "badge badge-delivered"
+     }[o.status] || "badge";
+%>
+  <div class="order-card">
+    <!-- header -->
+    <div class="order-header">
+      <span>Order #<%= o._id.toString().slice(-6) %></span>
+      <span><%= o.createdAt.toDateString() %></span>
+      <span class="<%= badgeClass %>"><%= o.status %></span>
+    </div>
+
+    <!-- body -->
+    <div class="order-body">
+     <ul>
+  <% o.items.forEach(i => { %>
+    <% if (i.product) { %>
+      <li><%= i.product.name %> × <%= i.quantity %></li>
+    <% } else { %>
+      <li><em>Deleted Product</em> × <%= i.quantity %></li>
+    <% } %>
+  <% }) %>
+</ul>
+
+    </div>
+  </div>
+<% }) %>

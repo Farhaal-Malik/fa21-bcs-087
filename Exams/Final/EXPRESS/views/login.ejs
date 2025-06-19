@@ -1,0 +1,25 @@
+<head>
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Ted Baker | Login</title>
+</head>
+
+<div class="login-wrapper">
+  <div class="login-container">
+    <h2>LOGIN</h2>
+
+    <form action="/login" method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <div class="forgot-password">
+            <a href="/forgot-password">Forgot your password?</a>
+        </div>
+        <button type="submit">SIGN IN</button>
+    </form>
+        <% if (error) { %>
+  <p style="color: red; padding-top: 5% ;"><%= error %></p>
+<% } %>
+    <div class="create-account">
+        <a href="/signup">Create account</a>
+    </div>
+  </div>
+</div>

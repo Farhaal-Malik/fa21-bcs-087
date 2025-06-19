@@ -1,0 +1,75 @@
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Keeps footer in view */
+}
+
+.login-container {
+    text-align: center;
+    width: 100%;
+    max-width: 420px; /* or 450px depending on your design */
+    margin: 0 auto;
+}
+
+
+h2 {
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 100%;
+}
+
+button {
+    background-color: #1b1b1b;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.forgot-password,
+.create-account {
+    margin-top: 10px;
+}
+
+.forgot-password a,
+.create-account a {
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password a:hover,
+.create-account a:hover {
+    text-decoration: underline;
+}
+
+.create-account .login-link span {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.create-account .login-link:hover span {
+  color: var(--hover-color); /* Optional hover effect */
+}

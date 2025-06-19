@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/checkout.css">
+
+<div class="checkout-container">
+  <h2>Checkout</h2>
+
+  <div class="checkout-content">
+    <div class="cart-summary">
+      <h3>Order Summary</h3>
+      <ul>
+        <% cartItems.forEach(({product, quantity}) => { %>
+          <li>
+            <div class="summary-item">
+              <span><%= product.name %></span>
+              <span><%= quantity %> × $<%= product.price %> = $<%= product.price * quantity %></span>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <div class="delivery-form">
+      <h3>Delivery Address</h3>
+      <form action="/checkout" method="POST">
+        <input name="name" placeholder="Full Name" required>
+        <input name="addressLine" placeholder="Address Line" required>
+        <input name="city" placeholder="City" required>
+        <input name="postalCode" placeholder="Postal Code" required>
+        <input name="country" placeholder="Country" required>
+
+        <button type="submit" class="checkout-btn">Place Order</button>
+      </form>
+    </div>
+  </div>
+</div>

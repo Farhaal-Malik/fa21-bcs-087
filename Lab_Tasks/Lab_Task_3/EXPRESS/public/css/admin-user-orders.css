@@ -1,0 +1,73 @@
+:root {
+  --brand-dark:   #1f2733;
+  --brand-accent: #4661e6;
+  --grey-bg:      #f7f9fc;
+  --grey-line:    #e3e8ef;
+}
+
+body { background: var(--grey-bg); }
+
+/* ---------- Page Title ---------- */
+h2 {
+  max-width: 900px;
+  margin: 35px auto 22px;
+  padding-left: 8px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  border-left: 4px solid var(--brand-accent);
+}
+
+/* ---------- Order Card ---------- */
+.card-block {
+  max-width: 900px;
+  margin: 0 auto 26px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+/* Header */
+.card-h {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 24px;
+  background: var(--brand-dark);
+  color: #fff;
+  font-size: 15px;
+}
+
+.card-h .meta   { flex: 1; }
+.card-h .name   { font-weight: 600; }
+.card-h .small  { font-size: 13px; opacity: .85; }
+
+/* Body */
+.card-b {
+  padding: 18px 24px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.card-b .address { margin: 0 0 12px; }
+.card-b ul.items { margin: 0 0 14px 18px; padding: 0; }
+.card-b li { margin-bottom: 4px; }
+
+/* ---------- Badges ---------- */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .35px;
+}
+.badge-processing { background:#e8eaf4; color:var(--brand-accent); }
+.badge-shipped    { background:#fff7e5; color:#f5a623; }
+.badge-delivered  { background:#e2f6ea; color:#27ae60; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .card-h { flex-direction: column; align-items: flex-start; gap: 10px; }
+}

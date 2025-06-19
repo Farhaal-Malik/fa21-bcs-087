@@ -1,0 +1,94 @@
+/* ========== Palette (matches storefront) ========== */
+:root {
+  --brand-dark:   #1f2733;
+  --brand-accent: #4661e6;
+  --grey-bg:      #f7f9fc;
+  --grey-line:    #e3e8ef;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--grey-bg);
+  color: var(--brand-dark);
+  margin: 0;
+  padding: 30px 0;
+}
+
+/* ---------- Page title ---------- */
+h2 {
+  max-width: 900px;
+  margin: 0 auto 28px;
+  margin-top: 2%;;
+  padding-left: 8px;
+  font-size: 28px;
+  font-weight: 700;
+  border-left: 4px solid var(--brand-accent);
+}
+
+/* ========== Order card ========== */
+.card-block {
+  max-width: 900px;
+  margin: 0 auto 26px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+/* ---- card header ---- */
+.card-h {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 24px;
+  background: var(--brand-dark);
+  color: #fff;
+  font-size: 15px;
+}
+
+.card-h .meta   { flex: 1; }
+.card-h .name   { font-weight: 600; }
+.card-h .small  { font-size: 13px; opacity: .85; }
+
+/* ---- card body ---- */
+.card-b {
+  padding: 18px 24px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.address { margin: 0 0 12px; }
+ul.items { margin: 0 0 14px 18px; padding: 0; }
+ul.items li { margin-bottom: 4px; }
+
+/* ========== Status select ========== */
+.status-form { display: inline-block; }
+.status-form select {
+  padding: 6px 10px;
+  border: 1px solid var(--grey-line);
+  border-radius: 4px;
+  font-size: 14px;
+}
+.status-form select:focus {
+  outline: none;
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 2px rgba(70,97,230,.15);
+}
+
+/* ========== Badges ========== */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .35px;
+}
+.badge-processing { background:#e8eaf4; color:var(--brand-accent); }
+.badge-shipped    { background:#fff7e5; color:#f5a623; }
+.badge-delivered  { background:#e2f6ea; color:#27ae60; }
+
+/* ========== Responsive ========== */
+@media (max-width: 600px) {
+  .card-h { flex-direction: column; align-items: flex-start; gap: 10px; }
+}

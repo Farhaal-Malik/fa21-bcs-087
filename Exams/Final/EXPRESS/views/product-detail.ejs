@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/css/product-detail.css">
+
+<div class="product-detail-container">
+  <div class="product-detail-image">
+    <img src="<%= product.image %>" alt="<%= product.name %>">
+  </div>
+
+  <div class="product-detail-info">
+    <h2><%= product.name %></h2>
+    <p><%= product.description %></p>
+    <strong>Price: $<%= product.price %></strong>
+    <br><br>
+
+    <button class="add-to-cart-btn" onclick="addToCart('<%= product._id %>')">Add to Cart</button>
+
+    <div id="toast" class="toast"></div>
+  </div>
+</div>
+
+<script>
+  function addToCart(productId) {
+    fetch("/add-to-cart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ productId })
+    })
+    .then(res => {
+      if (res.ok) {
+        showToast("✅ Product added to cart!", "success");
+      } else {
+        return res.text().then(text => {
+          console.error("Server error:", text);
+          showToast("❌ Could not add product to cart.", "error");
+        });
+      }
+    })
+    .catch(err => {
+      console.error("Fetch error:", err);
+      showToast("❌ Server unreachable.", "error");
+    });
+  }
+
+  function showToast(message, type) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.className = "toast show " + type;
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  }
+</script>
