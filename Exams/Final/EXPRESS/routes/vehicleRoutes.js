@@ -6,7 +6,6 @@ import { Vehicle } from "../models/vehicle.js";
 
 const router = express.Router();
 
-/* ───────── Auth middleware ───────── */
 function ensureLoggedIn(req, res, next) {
   if (!req.session.user) return res.redirect("/login");
   next();
@@ -17,7 +16,6 @@ function ensureAdmin(req, res, next) {
   next();
 }
 
-/* ───────── Multer config ───────── */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const vehicleImgPath = path.join(__dirname, "../public/images/vehicles");
@@ -31,18 +29,15 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-/* ───────── READ: Admin view all vehicles ───────── */
 router.get("/admin/vehicles", ensureLoggedIn, ensureAdmin, async (_req, res) => {
   const vehicles = await Vehicle.find().sort({ name: 1 });
   res.render("admin-vehicles", { title: "Manage Vehicles", vehicles });
 });
 
-/* ───────── CREATE form ───────── */
 router.get("/admin/vehicles/add", ensureLoggedIn, ensureAdmin, (_req, res) => {
   res.render("admin-vehicle-form", { title: "Add Vehicle", vehicle: {} });
 });
 
-/* ───────── CREATE handler ───────── */
 router.post(
   "/admin/vehicles/add",
   ensureLoggedIn,
@@ -56,14 +51,12 @@ router.post(
   }
 );
 
-/* ───────── EDIT form ───────── */
 router.get("/admin/vehicles/:id/edit", ensureLoggedIn, ensureAdmin, async (req, res) => {
   const vehicle = await Vehicle.findById(req.params.id);
   if (!vehicle) return res.redirect("/admin/vehicles");
   res.render("admin-vehicle-form", { title: "Edit Vehicle", vehicle });
 });
 
-/* ───────── EDIT handler ───────── */
 router.post(
   "/admin/vehicles/:id/edit",
   ensureLoggedIn,
@@ -84,13 +77,11 @@ router.post(
   }
 );
 
-/* ───────── DELETE handler ───────── */
 router.post("/admin/vehicles/:id/delete", ensureLoggedIn, ensureAdmin, async (req, res) => {
   await Vehicle.findByIdAndDelete(req.params.id);
   res.redirect("/admin/vehicles");
 });
 
-// ✅ Public route – read-only list of all vehicles
 router.get("/vehicles", async (req, res) => {
   try {
     const vehicles = await Vehicle.find().sort({ name: 1 });
