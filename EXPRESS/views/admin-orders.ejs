@@ -1,32 +1,50 @@
 <link rel="stylesheet" href="/css/adminOrders.css">
-<h2>Orders</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>User Email</th>
-      <th>Items</th>
-      <th>Address</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% orders.forEach(order => { %>
-      <tr>
-        <td><%= order.userEmail %></td>
-        <td>
-          <ul>
-            <% order.items.forEach(i => { %>
-              <li><%= i.product.name %> (x<%= i.quantity %>)</li>
-            <% }) %>
-          </ul>
-        </td>
-        <td>
-          <%= order.deliveryAddress.name %>, <%= order.deliveryAddress.addressLine %>, 
-          <%= order.deliveryAddress.city %>, <%= order.deliveryAddress.country %>
-        </td>
-        <td><%= order.createdAt.toDateString() %></td>
-      </tr>
-    <% }) %>
-  </tbody>
-</table>
+<h2 class="section-heading">
+  <i class="bi bi-bag-check-fill"></i><span>  -------- Orders</span>
+</h2>
+
+
+<% if (!orders.length) { %>
+  <p style="text-align:center">No orders yet.</p>
+<% } %>
+
+<% orders.forEach(o => { 
+     const badgeClass = {
+       Processing : "badge badge-processing",
+       Shipped    : "badge badge-shipped",
+       Delivered  : "badge badge-delivered"
+     }[o.status] || "badge";
+%>
+  <div class="card-block">
+    <!-- ── header ── -->
+    <div class="card-h">
+      <div class="meta">
+        <div class="name"><%= o.userEmail %></div>
+        <div class="email small">Order #<%= o._id.toString().slice(-6) %> • <%= o.createdAt.toDateString() %></div>
+      </div>
+      <span class="<%= badgeClass %>"><%= o.status %></span>
+    </div>
+
+    <!-- ── body ── -->
+    <div class="card-b">
+      <p class="address">
+        <%= o.deliveryAddress.name %>, <%= o.deliveryAddress.addressLine %>, 
+        <%= o.deliveryAddress.city %>, <%= o.deliveryAddress.country %>
+      </p>
+      <ul class="items">
+        <% o.items.forEach(i => { %>
+          <li><%= i.product.name %> × <%= i.quantity %></li>
+        <% }) %>
+      </ul>
+
+      <form action="/admin/orders/<%= o._id %>/status" method="POST" class="status-form">
+        <select name="status" onchange="this.form.submit()">
+          <option value="Processing" <%= o.status==="Processing"?"selected":"" %>>Processing</option>
+          <option value="Shipped"    <%= o.status==="Shipped"   ?"selected":"" %>>Shipped</option>
+          <option value="Delivered"  <%= o.status==="Delivered" ?"selected":"" %>>Delivered</option>
+        </select>
+      </form>
+    </div>
+  </div>
+<% }) %>

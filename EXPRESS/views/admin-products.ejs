@@ -9,38 +9,57 @@
     </a>
   </div>
 
-  <!-- Card & table -->
-  <div class="card">
-    <table class="admin-table">
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Price ($)</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% products.forEach(p => { %>
-          <tr>
-            <td data-label="Image"><img src="<%= p.image %>" alt="<%= p.name %>"></td>
-            <td data-label="Name"><%= p.name %></td>
-            <td data-label="Price"><%= p.price.toFixed(2) %></td>
-            <td data-label="Actions" class="table-actions">
-              <a href="/admin/products/<%= p._id %>/edit"><i class="fa-solid fa-pen"></i> Edit</a>
-              <form
-                action="/admin/products/<%= p._id %>/delete"
-                method="POST"
-                style="display:inline"
-              >
-                <button onclick="return confirm('Delete this product?')">
-                  <i class="fa-solid fa-trash"></i> Delete
-                </button>
-              </form>
-            </td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
+  <% if (!products.length) { %>
+    <p style="text-align:center">No products found.</p>
+  <% } %>
+
+  <% products.forEach(p => { %>
+    <div class="product-card">
+      <div class="product-info">
+        <img src="<%= p.image %>" alt="<%= p.name %>" />
+        <div class="details">
+          <h3><%= p.name %></h3>
+          <p>$<%= p.price.toFixed(2) %></p>
+        </div>
+        <div class="actions">
+          <a href="/admin/products/<%= p._id %>/edit">
+            <i class="fa-solid fa-pen"></i> Edit
+          </a>
+          <button type="button" onclick="confirmProductDelete('<%= p._id %>')">
+            <i class="fa-solid fa-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="productDeleteModal" class="modal">
+    <div class="modal-content">
+      <p>Are you sure you want to delete this product?</p>
+      <form id="productDeleteForm" method="POST">
+        <div class="modal-buttons">
+          <button type="submit" class="btn-confirm">Yes, Delete</button>
+          <button type="button" class="btn-cancel" onclick="closeProductModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+
+<script>
+  function confirmProductDelete(productId) {
+    const form = document.getElementById("productDeleteForm");
+    form.action = `/admin/products/${productId}/delete`;
+    document.getElementById("productDeleteModal").style.display = "flex";
+  }
+
+  function closeProductModal() {
+    document.getElementById("productDeleteModal").style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    const modal = document.getElementById("productDeleteModal");
+    if (event.target === modal) closeProductModal();
+  };
+</script>

@@ -7,11 +7,15 @@ import { fileURLToPath } from "url";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 
-import authRoutes from "./routes/authRoutes.js";
-import productRoutes from "./routes/productRoutes.js";
-import cartRoutes from "./routes/cartRoutes.js";
-import adminRoutes from "./routes/adminRoutes.js";          // Admin dashboard / orders
-import adminProductRoutes from "./routes/adminProductRoutes.js"; // ✅ NEW
+/* ─ Routes ─ */
+import authRoutes        from "./routes/authRoutes.js";
+import productRoutes     from "./routes/productRoutes.js";
+import cartRoutes        from "./routes/cartRoutes.js";
+import adminRoutes       from "./routes/adminRoutes.js";
+import adminProductRoutes from "./routes/adminProductRoutes.js";
+
+/* ─ Middleware ─ */
+import { refreshRole }   from "./middleware/refreshRole.js";
 
 const app = express();
 
@@ -24,20 +28,25 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(ejsLayouts);
 
-/* ───────── Middleware ───────── */
+/* ───────── Global middleware ───────── */
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
+/* Sessions */
 app.use(
   session({
-    secret: "supersecretkey",       // 👉 move to .env for production
+    secret: "supersecretkey",      // 👉 move to .env for production
     resave: false,
     saveUninitialized: false,
   })
 );
 
-/* ───────── Make user available in all views ───────── */
+/* 1️⃣  Keep isAdmin flag fresh on every request */
+app.use(refreshRole);
+
+/* 2️⃣  Expose user to all EJS views */
 app.use((req, res, next) => {
   res.locals.user = req.session.user;
   next();
@@ -49,8 +58,8 @@ app.get("/", (_req, res) => res.render("homepage", { title: "Homepage" }));
 app.use("/", authRoutes);
 app.use("/", productRoutes);
 app.use("/", cartRoutes);
-app.use("/", adminRoutes);          // Admin dashboard / orders
-app.use("/", adminProductRoutes);   // ✅ Admin product CRUD
+app.use("/", adminRoutes);
+app.use("/", adminProductRoutes);
 
 /* ───────── MongoDB ───────── */
 mongoose

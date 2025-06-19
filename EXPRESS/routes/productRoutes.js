@@ -4,18 +4,29 @@ import { Product } from "../models/product.js";
 const router = express.Router();
 
 // All products
+// All products with pagination
 router.get("/products", async (req, res) => {
   try {
-    const allProducts = await Product.find();
+    const perPage = 10;
+    const page = parseInt(req.query.page) || 1;
+
+    const totalProducts = await Product.countDocuments();
+    const products = await Product.find()
+      .skip((page - 1) * perPage)
+      .limit(perPage);
+
     res.render("products", {
       title: "All Products",
-      products: allProducts,
+      products,
+      currentPage: page,
+      totalPages: Math.ceil(totalProducts / perPage),
     });
   } catch (err) {
     console.error("Error fetching products:", err);
     res.status(500).send("Server error");
   }
 });
+
 
 // ✅ Product detail route
 router.get("/products/:id", async (req, res) => {

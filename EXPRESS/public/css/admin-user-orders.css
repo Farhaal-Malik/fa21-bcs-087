@@ -1,4 +1,3 @@
-/* ========== Palette (matches storefront) ========== */
 :root {
   --brand-dark:   #1f2733;
   --brand-accent: #4661e6;
@@ -6,26 +5,20 @@
   --grey-line:    #e3e8ef;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--grey-bg);
-  color: var(--brand-dark);
-  margin: 0;
-  padding: 30px 0;
-}
+body { background: var(--grey-bg); }
 
-/* ---------- Page title ---------- */
+/* ---------- Page Title ---------- */
 h2 {
   max-width: 900px;
-  margin: 0 auto 28px;
-  margin-top: 2%;;
+  margin: 35px auto 22px;
   padding-left: 8px;
   font-size: 28px;
   font-weight: 700;
+  color: var(--brand-dark);
   border-left: 4px solid var(--brand-accent);
 }
 
-/* ========== Order card ========== */
+/* ---------- Order Card ---------- */
 .card-block {
   max-width: 900px;
   margin: 0 auto 26px;
@@ -35,7 +28,7 @@ h2 {
   overflow: hidden;
 }
 
-/* ---- card header ---- */
+/* Header */
 .card-h {
   display: flex;
   align-items: center;
@@ -50,32 +43,18 @@ h2 {
 .card-h .name   { font-weight: 600; }
 .card-h .small  { font-size: 13px; opacity: .85; }
 
-/* ---- card body ---- */
+/* Body */
 .card-b {
   padding: 18px 24px;
   font-size: 15px;
   line-height: 1.5;
 }
 
-.address { margin: 0 0 12px; }
-ul.items { margin: 0 0 14px 18px; padding: 0; }
-ul.items li { margin-bottom: 4px; }
+.card-b .address { margin: 0 0 12px; }
+.card-b ul.items { margin: 0 0 14px 18px; padding: 0; }
+.card-b li { margin-bottom: 4px; }
 
-/* ========== Status select ========== */
-.status-form { display: inline-block; }
-.status-form select {
-  padding: 6px 10px;
-  border: 1px solid var(--grey-line);
-  border-radius: 4px;
-  font-size: 14px;
-}
-.status-form select:focus {
-  outline: none;
-  border-color: var(--brand-accent);
-  box-shadow: 0 0 0 2px rgba(70,97,230,.15);
-}
-
-/* ========== Badges ========== */
+/* ---------- Badges ---------- */
 .badge {
   padding: 4px 10px;
   border-radius: 12px;
@@ -88,7 +67,7 @@ ul.items li { margin-bottom: 4px; }
 .badge-shipped    { background:#fff7e5; color:#f5a623; }
 .badge-delivered  { background:#e2f6ea; color:#27ae60; }
 
-/* ========== Responsive ========== */
+/* ---------- Responsive ---------- */
 @media (max-width: 600px) {
   .card-h { flex-direction: column; align-items: flex-start; gap: 10px; }
 }

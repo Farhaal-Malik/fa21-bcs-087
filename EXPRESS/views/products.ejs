@@ -4,14 +4,29 @@
 
 <div class="product-grid">
   <% products.forEach(product => { %>
-    <div class="product-card">
-      <a href="/products/<%= product._id %>">
+    <div class="product-card-mulberry">
+      <a href="/products/<%= product._id %>" class="product-link">
         <div class="image-wrapper">
           <img src="<%= product.image %>" alt="<%= product.name %>">
         </div>
+        <div class="product-meta">
+          <p class="product-label">Icon</p> <!-- You can replace this dynamically -->
+          <h3 class="product-name"><%= product.name %></h3>
+          <p class="product-subtext">8 colours</p> <!-- Optional: random or fixed -->
+          <p class="product-price">£<%= product.price %></p>
+        </div>
       </a>
-     <h3><a href="/products/<%= product._id %>"><%= product.name %></a></h3>
-      <strong>$<%= product.price %></strong>
     </div>
   <% }) %>
+</div>
+
+<!-- Pagination Controls -->
+<div class="pagination">
+  <% for (let i = 1; i <= totalPages; i++) { %>
+    <% if (i === currentPage) { %>
+      <span class="current-page"><%= i %></span>
+    <% } else { %>
+      <a href="/products?page=<%= i %>"><%= i %></a>
+    <% } %>
+  <% } %>
 </div>

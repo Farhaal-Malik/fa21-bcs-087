@@ -5,26 +5,30 @@
   <link rel="stylesheet" href="/css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mulberry Style Header</title>
+
+  <!-- Fonts & Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <% if (user && user.isAdmin) { %>
   <!-- ================= ADMIN HEADER ================= -->
-  <header class="top-header admin-header">
-    <nav class="nav-left">
-      <a href="/admin/dashboard">📦 View Orders</a>
-      <a href="/admin/products">🛠 Manage Products</a>
-      <a href="/admin/users">👥 Manage Users</a>
+   
+  <header class="admin1-header">
+    <nav class="admin-nav-left">
+      <a href="/admin/dashboard" title="Orders"><i class="bi bi-box-seam"></i></a>
+      <a href="/admin/products" title="Products"><i class="bi bi-tools"></i></a>
+      <a href="/admin/users" title="Users"><i class="bi bi-people-fill"></i></a>
     </nav>
 
-    <div class="logo">
-      <h1>Admin Panel</h1>
-    </div>
+    <div class="admin-logo">ADMIN PANEL</div>
 
-    <nav class="nav-right">
-      <a href="/logout">Logout</a>
+    <nav class="admin-nav-right">
+      <a href="/logout" title="Logout"><i class="bi bi-box-arrow-right"></i></a>
     </nav>
+    
   </header>
 <% } else { %>
   <!-- ================= CUSTOMER HEADER ================= -->
@@ -103,13 +107,12 @@
         </div>
       </div>
 
-      <a href="/views/cv.ejs">CV</a>
-
       <div class="dropdown">
         <a href="#">My Mulberry</a>
         <div class="dropdown-menu">
           <% if (user) { %>
             <a href="/profile">Profile</a>
+            <a href="/my-orders">My Orders</a>
             <a href="/logout">Logout</a>
           <% } else { %>
             <a href="/login">Sign In</a>
@@ -125,10 +128,12 @@
   </header>
 <% } %>
 
+<!-- ================= PAGE BODY ================= -->
 <main>
   <%- body %>
 </main>
 
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-section">

@@ -1,0 +1,69 @@
+/* ---------- Palette ---------- */
+:root {
+  --brand-dark:   #1f2733;
+  --brand-accent: #4661e6;
+  --grey-bg:      #f7f9fc;
+  --grey-line:    #e3e8ef;
+}
+body   { background: var(--grey-bg); }
+
+/* ---------- Page title ---------- */
+h2 {
+  max-width: 900px;          /* match card width */
+  margin: 35px auto 22px;    /* top-spacing, center via auto sides */
+  padding-left: 8px;         /* subtle inset so it isn’t flush */
+  font-size: 28px;           /* slightly smaller */
+  font-weight: 700;
+  color: var(--brand-dark);
+  border-left: 4px solid var(--brand-accent);  /* accent bar */
+}
+
+
+/* ---------- Order card ---------- */
+.order-card {
+  max-width: 900px;
+  margin: 0 auto 28px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: var(--brand-dark);
+  color: #fff;
+  font-size: 15px;
+}
+.order-header span { font-weight: 600; }
+
+.order-body {
+  padding: 18px 24px;
+}
+.order-body ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+.order-body li { margin-bottom: 4px; }
+
+/* ---------- Status badge ---------- */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.badge-processing { background:#e8eaf4; color:#4661e6; }
+.badge-shipped    { background:#fff7e5; color:#f5a623; }
+.badge-delivered  { background:#e2f6ea; color:#27ae60; }
+
+/* ---------- Mobile ---------- */
+@media (max-width:600px){
+  .order-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
