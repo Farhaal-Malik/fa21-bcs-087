@@ -6,47 +6,39 @@ import path from "path";
 import { fileURLToPath } from "url";
 import session from "express-session";
 import cookieParser from "cookie-parser";
-
-/* ─ Routes ─ */
 import authRoutes        from "./routes/authRoutes.js";
 import productRoutes     from "./routes/productRoutes.js";
 import cartRoutes        from "./routes/cartRoutes.js";
 import adminRoutes       from "./routes/adminRoutes.js";
 import adminProductRoutes from "./routes/adminProductRoutes.js";
 
-/* ─ Middleware ─ */
+
 import { refreshRole }   from "./middleware/refreshRole.js";
 
 const app = express();
 
-/* ───────── Path setup ───────── */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
-/* ───────── View engine ───────── */
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(ejsLayouts);
 
-/* ───────── Global middleware ───────── */
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-/* Sessions */
 app.use(
   session({
-    secret: "supersecretkey",      // 👉 move to .env for production
+    secret: "supersecretkey",   
     resave: false,
     saveUninitialized: false,
   })
 );
 
-/* 1️⃣  Keep isAdmin flag fresh on every request */
 app.use(refreshRole);
 
-/* 2️⃣  Expose user to all EJS views */
 app.use((req, res, next) => {
   res.locals.user = req.session.user;
   next();

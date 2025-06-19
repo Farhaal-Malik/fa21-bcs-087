@@ -13,9 +13,7 @@
 </head>
 <body>
 
-<% if (user && user.isAdmin) { %>
-  <!-- ================= ADMIN HEADER ================= -->
-   
+<% if (user && user.isAdmin) { %>   
   <header class="admin1-header">
     <nav class="admin-nav-left">
       <a href="/admin/dashboard" title="Orders"><i class="bi bi-box-seam"></i></a>
@@ -26,6 +24,7 @@
     <div class="admin-logo">ADMIN PANEL</div>
 
     <nav class="admin-nav-right">
+      <a href="/admin/vehicles" title="Vehicles"><i class="bi bi-truck-front-fill"></i></a>
       <a href="/logout" title="Logout"><i class="bi bi-box-arrow-right"></i></a>
     </nav>
     
@@ -86,12 +85,7 @@
       </div>
 
       <div class="dropdown">
-        <a href="#">Gifts</a>
-        <div class="dropdown-menu">
-          <a href="#">Gifts</a>
-          <a href="#">Gifts For Her</a>
-          <a href="#">Gifts For Him</a>
-        </div>
+          <a href="/vehicles">Vehicles</a>
       </div>
     </nav>
 

@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/css/products.css">
+
+<h2 style="text-align: center; margin-top: 20px;">Our Vehicles</h2>
+
+<div class="product-grid">
+  <% vehicles.forEach(vehicle => { %>
+    <div class="product-card-mulberry">
+      <div class="product-link">
+        <div class="image-wrapper">
+          <img src="<%= vehicle.image %>" alt="<%= vehicle.name %>">
+        </div>
+        <div class="product-meta">
+          <p class="product-label"><%= vehicle.brand %></p>
+          <h3 class="product-name"><%= vehicle.name %></h3>
+          <p class="product-subtext"><%= vehicle.type %></p>
+          <p class="product-price">£<%= vehicle.price.toLocaleString() %></p>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
